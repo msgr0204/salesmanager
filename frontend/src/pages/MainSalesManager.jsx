@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { getProducts, createProduct } from '../services/productService';
-import { Route,Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ProductList from '../components/Product/ProductList';
+import Sales from '../components/Sales/Sales';
 import Header from '../components/Header';
 import SideBar from '../components/SideBar';
 
 const Inventory = () => {
   const [products, setProducts] = useState([]);
-  const [page, setPage]= useState('Home')
+  const [page, setPage] = useState('home')
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -22,6 +26,12 @@ const Inventory = () => {
     fetchProducts();
   }, []);
 
+  const handlePageChange = (pageSelected) => {
+    setPage(pageSelected)
+    navigate(`/${pageSelected}`)
+
+  }
+
   const handleProductAdded = async (newProductData) => {
     try {
       const newProduct = await createProduct(newProductData);
@@ -35,11 +45,12 @@ const Inventory = () => {
     <div className='bg-primero min-h-screen h-full '>
       <Header />
       <div className='flex flex-row w-full'>
-        <SideBar />
+        <SideBar pageSelected={page} handlePageChange={handlePageChange} />
         <Routes>
-          <Route path='/inventory' element={<ProductList products={products} />}/>
+          <Route path='/inventory' element={<ProductList products={products}  />} />
+          <Route path='/sales' element={<Sales products={products}  />} />
         </Routes>
-        
+
       </div>
     </div>
   );

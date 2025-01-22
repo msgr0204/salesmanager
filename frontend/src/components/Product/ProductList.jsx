@@ -118,8 +118,6 @@ const ProductList = ({ products }) => {
           </thead>
 
           <tbody>
-
-
             {products.map((product) => (
               <tr key={product.id} className='text-cuarto-medio border-b-[1px] border-cuarto-medio cursor-pointer hover:bg-cuarto-oscuro'>
                 <td className='p-2'>{product.id}</td>
@@ -132,7 +130,7 @@ const ProductList = ({ products }) => {
           </tbody>
         </table>
         {products.length === 0 && (
-          <p className='text-cuarto text-center w-full py-5 font-semibold'>No hay productos disponibles.</p>
+          <p className='text-cuarto text-center w-full py-5 font-semibold'>No products available.</p>
         )}
       </div>
 
