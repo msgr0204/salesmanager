@@ -6,14 +6,14 @@ const DeleteProductForm = ({ product, onSubmit, onClose }) => {
   
     return (
       <div>
-        <p className="text-sm">
+        <p className="text-base">
           Are you sure you want to delete <strong>{product.name}</strong>?
         </p>
         <div className="flex justify-end mt-4 gap-2">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                    className="px-4 py-2 border rounded hover:bg-cuarto-semi"
           >
             Cancel
           </button>

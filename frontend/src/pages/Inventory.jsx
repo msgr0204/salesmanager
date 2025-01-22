@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { getProducts, createProduct } from '../services/productService';
+import { Route,Routes } from 'react-router-dom';
 import ProductList from '../components/Product/ProductList';
 import Header from '../components/Header';
 import SideBar from '../components/SideBar';
 
 const Inventory = () => {
   const [products, setProducts] = useState([]);
+  const [page, setPage]= useState('Home')
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -33,8 +35,11 @@ const Inventory = () => {
     <div className='bg-primero min-h-screen h-full '>
       <Header />
       <div className='flex flex-row w-full'>
-        <SideBar/>
-        <ProductList products={products} />
+        <SideBar />
+        <Routes>
+          <Route path='/inventory' element={<ProductList products={products} />}/>
+        </Routes>
+        
       </div>
     </div>
   );

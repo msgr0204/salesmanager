@@ -1,5 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch} from '@fortawesome/free-solid-svg-icons';
+
 import CreateProductForm from './CreateProductForm';
 import EditProductForm from './EditProductForm';
 import DeleteProductForm from './DeleteProductForm';
@@ -71,9 +76,16 @@ const ProductList = ({ products }) => {
           />
         )}
       </Modal>
-
+      <h2 className='text-3xl text-cuarto-medio font-poppins mb-3'>Product List</h2>
       <div className='flex flex-row justify-between '>
-        <h2 className='text-2xl text-cuarto-medio font-poppins '>Product List</h2>
+        <div className='w-1/4 flex flex-row items-center pr-3 bg-cuarto-oscuro border text-cuarto-claro border-cuarto-semi rounded overflow-hidden'>
+         
+          <input type="text" 
+          placeholder='Search by ID or SKU'
+          className='bg-transparent w-full p-1 px-3 outline-none'
+          />
+          <FontAwesomeIcon icon={faSearch} />
+        </div>
         <div className='flex flex-row gap-2  '>
           <button
             onClick={openCreateModal}
@@ -93,7 +105,7 @@ const ProductList = ({ products }) => {
         </div>
       </div>
 
-      <div className='border-[1px] my-4  border-cuarto-medio overflow-hidden rounded-lg'>
+      <div className='border-[1px] my-2  border-cuarto-medio overflow-hidden rounded-lg'>
         <table className='mx-auto  w-full font-inter'>
           <thead>
             <tr className='text-cuarto p-5 border-b-[1px] bg-cuarto-oscuro border-cuarto-medio'>
