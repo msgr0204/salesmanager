@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch} from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import CreateProductForm from './CreateProductForm';
 import EditProductForm from './EditProductForm';
 import DeleteProductForm from './DeleteProductForm';
 import Modal from '../Modal';
+
+import { createProduct, updateProduct, deleteProduct } from '../../services/productService'
 
 const ProductList = ({ products }) => {
 
@@ -17,8 +19,14 @@ const ProductList = ({ products }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+
+  useEffect(() => {
+    console.log(selectedProduct)
+  }, [selectedProduct])
 
   const openCreateModal = () => {
     setModalType('create');
@@ -26,29 +34,31 @@ const ProductList = ({ products }) => {
   };
 
   const openEditModal = (product) => {
+    console.log('info edit', product)
     setModalType('edit');
-    setSelectedProduct(product);
     setIsModalOpen(true);
   };
 
   const openDeleteModal = (product) => {
     setModalType('delete');
-    setSelectedProduct(product);
     setIsModalOpen(true);
   };
 
   const handleCreateProduct = (newProduct) => {
     // Lógica para crear producto
+    createProduct(newProduct)
     console.log('Creating product:', newProduct);
   };
 
   const handleEditProduct = (updatedProduct) => {
     // Lógica para editar producto
+    updateProduct(selectedProduct.id,updatedProduct)
     console.log('Editing product:', updatedProduct);
   };
 
   const handleDeleteProduct = (productId) => {
     // Lógica para eliminar producto
+    deleteProduct(selectedProduct.id)
     console.log('Deleting product with ID:', productId);
   };
 
@@ -79,10 +89,10 @@ const ProductList = ({ products }) => {
       <h2 className='text-3xl text-cuarto-medio font-poppins mb-3'>Product List</h2>
       <div className='flex flex-row justify-between '>
         <div className='w-1/4 flex flex-row items-center pr-3 bg-cuarto-oscuro border text-cuarto-claro border-cuarto-semi rounded overflow-hidden'>
-         
-          <input type="text" 
-          placeholder='Search by ID or SKU'
-          className='bg-transparent w-full p-1 px-3 outline-none'
+
+          <input type="text"
+            placeholder='Search by ID or SKU'
+            className='bg-transparent w-full p-1 px-3 outline-none'
           />
           <FontAwesomeIcon icon={faSearch} />
         </div>
@@ -104,7 +114,21 @@ const ProductList = ({ products }) => {
           </button>
         </div>
       </div>
+      <div className='bg-primero-claro rounded-lg w-full px-3 mt-2'>
+        <h2 className=' text-cuarto-medio text-lg font-semibold w-full border-b '>Producto seleccionado</h2>
+        {selectedProduct != null ? (
+          <div className='text-cuarto-medio  border-cuarto-medio cursor-pointer hover:bg-cuarto-oscuro flex flex-row justify-between'>
 
+            <div className='p-2 w-1/6 text-center'>{selectedProduct.id}</div>
+            <div className='p-2 w-1/4 text-left'>{selectedProduct.name}</div>
+            <div className='p-2 w-1/4 text-left'>{selectedProduct.description}</div>
+            <div className='p-2 w-1/6 text-center'>$ {selectedProduct.price}</div>
+            <div className='p-2 w-1/6 text-center'>{selectedProduct.stock}</div>
+          </div>) : (
+          <p className='w-full text-center p-2 text-cuarto-medio'>No se ha seleccionado un producto aún</p>
+        )}
+
+      </div>
       <div className='border-[1px] my-2  border-cuarto-medio overflow-hidden rounded-lg'>
         <table className='mx-auto  w-full font-inter'>
           <thead>
@@ -119,12 +143,12 @@ const ProductList = ({ products }) => {
 
           <tbody>
             {products.map((product) => (
-              <tr key={product.id} className='text-cuarto-medio border-b-[1px] border-cuarto-medio cursor-pointer hover:bg-cuarto-oscuro'>
+              <tr key={product.id} onClick={() => { setSelectedProduct(product) }} className='text-cuarto-medio border-b-[1px] border-cuarto-medio cursor-pointer hover:bg-cuarto-oscuro'>
                 <td className='p-2'>{product.id}</td>
                 <td className='p-2'>{product.name}</td>
                 <td className='p-2'>{product.description}</td>
-                <td className='p-2 text-center'>{product.unitPrice}</td>
-                <td className='p-2 text-center'>{product.stock}</td>
+                <td className='p-2 text-center'>$ {product.price}</td>
+                <td className='p-2 text-center'> {product.stock}</td>
               </tr>
             ))}
           </tbody>

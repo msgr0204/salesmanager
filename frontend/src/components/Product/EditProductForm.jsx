@@ -44,8 +44,8 @@ const EditProductForm = ({ product, onSubmit, onClose }) => {
                     <label className="block text-sm font-medium mb-1">Unit Price</label>
                     <input
                         type="number"
-                        name="unitPrice"
-                        value={formData.unitPrice}
+                        name="price"
+                        value={formData.price}
                         onChange={handleChange}
                         className="w-full p-2 border rounded bg-cuarto-semi placeholder:text-cuarto-medio focus:outline-none focus:ring focus:ring-blue-500"
                         placeholder="Enter price"
