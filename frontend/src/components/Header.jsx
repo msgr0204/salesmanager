@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import logo from '../assets/logo.webp'
+import logo from '../assets/logo-play.webp'
 
 
 const Header = () => {
