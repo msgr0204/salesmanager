@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import ProductList from '../components/Product/ProductList';
 import Sales from '../components/Sales/Sales';
+import Report from '../components/Report/Report'
 import Header from '../components/Header';
 import SideBar from '../components/SideBar';
 
@@ -31,7 +32,7 @@ const Inventory = () => {
     navigate(`/${pageSelected}`)
 
   }
-
+/* 
   const handleProductAdded = async (newProductData) => {
     try {
       const newProduct = await createProduct(newProductData);
@@ -39,7 +40,7 @@ const Inventory = () => {
     } catch (error) {
       console.error('Error adding product:', error);
     }
-  };
+  }; */
 
   return (
     <div className='bg-primero min-h-screen h-full '>
@@ -49,6 +50,7 @@ const Inventory = () => {
         <Routes>
           <Route path='/inventory' element={<ProductList products={products}  />} />
           <Route path='/sales' element={<Sales products={products}  />} />
+          <Route path='/report' element={<Report  />} />
         </Routes>
 
       </div>

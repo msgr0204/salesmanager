@@ -86,12 +86,12 @@ const ProductList = ({ products }) => {
           />
         )}
       </Modal>
-      <h2 className='text-3xl text-cuarto-medio font-poppins mb-3'>Product List</h2>
+      <h2 className='text-3xl text-cuarto-medio font-poppins mb-3'>Lista de Productos</h2>
       <div className='flex flex-row justify-between '>
         <div className='w-1/4 flex flex-row items-center pr-3 bg-cuarto-oscuro border text-cuarto-claro border-cuarto-semi rounded overflow-hidden'>
 
           <input type="text"
-            placeholder='Search by ID or SKU'
+            placeholder='Buscar por Nombre Id o SKU'
             className='bg-transparent w-full p-1 px-3 outline-none'
           />
           <FontAwesomeIcon icon={faSearch} />
@@ -100,17 +100,17 @@ const ProductList = ({ products }) => {
           <button
             onClick={openCreateModal}
             className='bg-segundo text-cuarto-claro px-3 rounded-lg border-[1px] border-cuarto-medio font-semibold hover:bg-segundo-claro hover:text-cuarto-claro transition-colors duration-300'>
-            + Create Product
+            + Crear producto
           </button>
           <button
             onClick={openEditModal}
             className='bg-cuarto-oscuro text-cuarto-medio px-3 rounded-lg border-[1px] border-cuarto-medio font-semibold hover:bg-segundo hover:text-cuarto-claro transition-colors duration-300'>
-            Update Product
+            Editar Producto
           </button>
           <button
             onClick={openDeleteModal}
             className='bg-cuarto-oscuro text-cuarto-medio px-3 rounded-lg border-[1px] border-cuarto-medio font-semibold hover:bg-segundo hover:text-cuarto-claro transition-colors duration-300'>
-            Delete Product
+            Eliminar Producto
           </button>
         </div>
       </div>
@@ -134,10 +134,10 @@ const ProductList = ({ products }) => {
           <thead>
             <tr className='text-cuarto p-5 border-b-[1px] bg-cuarto-oscuro border-cuarto-medio'>
               <th className='p-2 w-1/6 text-left'>ID</th>
-              <th className='p-2 w-1/4 text-left'>Name</th>
-              <th className='p-2 w-1/4 text-left'>Description</th>
-              <th className='p-2 w-1/6 text-center'>Unit Price</th>
-              <th className='p-2 w-1/6 text-center'>Quantity in Stock</th>
+              <th className='p-2 w-1/4 text-left'>Nombre</th>
+              <th className='p-2 w-1/4 text-left'>Descripción</th>
+              <th className='p-2 w-1/6 text-center'>Precio Unitario</th>
+              <th className='p-2 w-1/6 text-center'>Cantidad en Stock</th>
             </tr>
           </thead>
 

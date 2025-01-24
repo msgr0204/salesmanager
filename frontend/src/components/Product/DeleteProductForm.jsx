@@ -7,7 +7,7 @@ const DeleteProductForm = ({ product, onSubmit, onClose }) => {
     return (
       <div>
         <p className="text-base">
-          Are you sure you want to delete <strong>{product.name}</strong>?
+          ¿Está seguro de eliminar el producto: <strong>{product.name}</strong>?
         </p>
         <div className="flex justify-end mt-4 gap-2">
           <button
@@ -15,14 +15,14 @@ const DeleteProductForm = ({ product, onSubmit, onClose }) => {
             onClick={onClose}
                     className="px-4 py-2 border rounded hover:bg-cuarto-semi"
           >
-            Cancel
+            Cancelar
           </button>
           <button
             type="button"
             onClick={handleDelete}
             className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
           >
-            Delete
+            Eliminar
           </button>
         </div>
       </div>

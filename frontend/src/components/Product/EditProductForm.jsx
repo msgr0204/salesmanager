@@ -18,7 +18,7 @@ const EditProductForm = ({ product, onSubmit, onClose }) => {
     return (
         <form onSubmit={handleSubmit} className=''>
             <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Name</label>
+                <label className="block text-sm font-medium mb-1">Nombre</label>
                 <input
                     type="text"
                     name="name"
@@ -30,7 +30,7 @@ const EditProductForm = ({ product, onSubmit, onClose }) => {
                 />
             </div>
             <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Description</label>
+                <label className="block text-sm font-medium mb-1">Descripción</label>
                 <textarea
                     name="description"
                     value={formData.description}
@@ -41,7 +41,7 @@ const EditProductForm = ({ product, onSubmit, onClose }) => {
             </div>
             <div className="flex gap-4">
                 <div className="flex-1">
-                    <label className="block text-sm font-medium mb-1">Unit Price</label>
+                    <label className="block text-sm font-medium mb-1">Precio Unitario</label>
                     <input
                         type="number"
                         name="price"
@@ -71,13 +71,13 @@ const EditProductForm = ({ product, onSubmit, onClose }) => {
                     onClick={onClose}
                     className="px-4 py-2 border rounded hover:bg-cuarto-semi"
                 >
-                    Cancel
+                    Cancelar
                 </button>
                 <button
                     type="submit"
                     className="px-4 py-2 bg-segundo text-cuarto-claro rounded hover:bg-segundo-claro"
                 >
-                    Save
+                    Guardar
                 </button>
             </div>
         </form>
